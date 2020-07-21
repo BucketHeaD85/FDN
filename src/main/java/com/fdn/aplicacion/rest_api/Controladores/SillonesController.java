@@ -45,7 +45,7 @@ public class SillonesController {
             MediaType.APPLICATION_XML_VALUE,
             MediaType.APPLICATION_JSON_VALUE
             })
-    public ResponseEntity<Object> actualizarSillon(@PathVariable @Pattern(regexp = "[^0-9]") int id_sillon){
+    public ResponseEntity<Object> actualizarSillon(@PathVariable int id_sillon){
         Sillonesdequimio nuevo = servicioSillon.findById(id_sillon);
         if(nuevo == null){throw new SillonException("Sillón no existe");}
         else {
