@@ -1,0 +1,17 @@
+/home/luis/Escritorio/Analisis-Ayudantia-SpringBoot-without_login/src/main/java/com/ayudantia/demo/HLTV/Servicios/JugadorServicio.java
+/home/luis/Escritorio/Analisis-Ayudantia-SpringBoot-without_login/src/main/java/com/ayudantia/demo/HLTV/Servicios/EquipoServicio.java
+/home/luis/Escritorio/Analisis-Ayudantia-SpringBoot-without_login/src/main/java/com/ayudantia/demo/HLTV/Repositorios/TorneoRepositorio.java
+/home/luis/Escritorio/Analisis-Ayudantia-SpringBoot-without_login/src/main/java/com/ayudantia/demo/HLTV/Repositorios/EquipoRepositorio.java
+/home/luis/Escritorio/Analisis-Ayudantia-SpringBoot-without_login/src/main/java/com/ayudantia/demo/HLTV/Modelos/Torneo.java
+/home/luis/Escritorio/Analisis-Ayudantia-SpringBoot-without_login/src/main/java/com/ayudantia/demo/HLTV/Controladores/JugadorController.java
+/home/luis/Escritorio/Analisis-Ayudantia-SpringBoot-without_login/src/main/java/com/ayudantia/demo/HLTV/Controladores/PartidoController.java
+/home/luis/Escritorio/Analisis-Ayudantia-SpringBoot-without_login/src/main/java/com/ayudantia/demo/HLTV/Controladores/EquipoController.java
+/home/luis/Escritorio/Analisis-Ayudantia-SpringBoot-without_login/src/main/java/com/ayudantia/demo/HLTV/Modelos/Partido.java
+/home/luis/Escritorio/Analisis-Ayudantia-SpringBoot-without_login/src/main/java/com/ayudantia/demo/HLTV/Controladores/TorneoController.java
+/home/luis/Escritorio/Analisis-Ayudantia-SpringBoot-without_login/src/main/java/com/ayudantia/demo/HLTV/Servicios/PartidoServicio.java
+/home/luis/Escritorio/Analisis-Ayudantia-SpringBoot-without_login/src/main/java/com/ayudantia/demo/HLTV/Repositorios/PartidoRepositorio.java
+/home/luis/Escritorio/Analisis-Ayudantia-SpringBoot-without_login/src/main/java/com/ayudantia/demo/HLTV/Repositorios/JugadorRepositorio.java
+/home/luis/Escritorio/Analisis-Ayudantia-SpringBoot-without_login/src/main/java/com/ayudantia/demo/HLTV/Servicios/TorneoServicio.java
+/home/luis/Escritorio/Analisis-Ayudantia-SpringBoot-without_login/src/main/java/com/ayudantia/demo/HLTV/Modelos/Jugador.java
+/home/luis/Escritorio/Analisis-Ayudantia-SpringBoot-without_login/src/main/java/com/ayudantia/demo/HLTV/Modelos/Equipo.java
+/home/luis/Escritorio/Analisis-Ayudantia-SpringBoot-without_login/src/main/java/com/ayudantia/demo/AyudantiaApplication.java

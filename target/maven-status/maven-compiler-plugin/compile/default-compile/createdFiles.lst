@@ -1,0 +1,17 @@
+com/ayudantia/demo/HLTV/Modelos/Partido.class
+com/ayudantia/demo/HLTV/Servicios/EquipoServicio.class
+com/ayudantia/demo/HLTV/Repositorios/JugadorRepositorio.class
+com/ayudantia/demo/HLTV/Servicios/PartidoServicio.class
+com/ayudantia/demo/HLTV/Modelos/Torneo.class
+com/ayudantia/demo/HLTV/Controladores/EquipoController.class
+com/ayudantia/demo/HLTV/Modelos/Equipo.class
+com/ayudantia/demo/HLTV/Servicios/JugadorServicio.class
+com/ayudantia/demo/HLTV/Controladores/JugadorController.class
+com/ayudantia/demo/HLTV/Repositorios/EquipoRepositorio.class
+com/ayudantia/demo/AyudantiaApplication.class
+com/ayudantia/demo/HLTV/Servicios/TorneoServicio.class
+com/ayudantia/demo/HLTV/Controladores/TorneoController.class
+com/ayudantia/demo/HLTV/Controladores/PartidoController.class
+com/ayudantia/demo/HLTV/Repositorios/TorneoRepositorio.class
+com/ayudantia/demo/HLTV/Repositorios/PartidoRepositorio.class
+com/ayudantia/demo/HLTV/Modelos/Jugador.class
