@@ -1,8 +1,10 @@
 package com.fdn.aplicacion.rest_api.Controladores;
 
 import com.fdn.aplicacion.rest_api.Entity.Sillonesdequimio;
+import com.fdn.aplicacion.rest_api.Modelos.MHoradequimio;
 import com.fdn.aplicacion.rest_api.Exceptions.SillonException;
 import com.fdn.aplicacion.rest_api.Servicios.SillonesService;
+import com.fdn.aplicacion.rest_api.Servicios.HoraServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpHeaders;
@@ -11,6 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import javax.validation.Valid;
 
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.PositiveOrZero;
@@ -25,6 +28,9 @@ public class SillonesController {
     @Qualifier("ServicioSillonesdequimio")
     SillonesService servicioSillon;
     
+    @Autowired
+    @Qualifier("serviciohora")
+    HoraServicio servicio;
 
     @GetMapping(path="/{estado}",
             produces = {
@@ -58,5 +64,14 @@ public class SillonesController {
                     HttpStatus.OK);
             }
         }
+    @PostMapping
+    public boolean createHora(@RequestBody @Valid MHoradequimio hora){
+
+        System.out.println(hora.getfInicio());
+        System.out.println(hora.getfTermino());
+        System.out.println(hora.getIdPaciente());
+        System.out.println(hora.getIdSillon());
+        return servicio.crear(hora);
+    }
 
 }
