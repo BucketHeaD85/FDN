@@ -64,7 +64,7 @@ public class SillonesController {
                     HttpStatus.OK);
             }
         }
-    @PostMapping
+    @PostMapping("/")
     public boolean createHora(@RequestBody @Valid MHoradequimio hora){
 
         System.out.println(hora.getfInicio());
