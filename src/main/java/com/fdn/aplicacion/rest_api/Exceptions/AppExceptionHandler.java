@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import javax.validation.Constraint;
@@ -55,10 +56,21 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
                 HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @ExceptionHandler(ConstraintViolationException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    ResponseEntity<String> handleConstraintViolationException(ConstraintViolationException e){
-        return new ResponseEntity<>("Not valid meme",HttpStatus.BAD_REQUEST);
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    ResponseEntity<Object> handleTypeMismatch(MethodArgumentTypeMismatchException ex){
+        /*String descripcionMensajeError = "El identificador ingresado debe ser un entero.";*/
+        String name = ex.getName();
+        String type = ex.getRequiredType().getSimpleName();
+        Object value = ex.getValue();
+        String descripcionMensajeError = String.format("El campo '%s' debe ser de tipo '%s'. El valor ingresado: '%s' no cumple la condición.",
+                name, type, value);
+        MensajeError mensaje = new MensajeError( new Date(),descripcionMensajeError);
+
+
+        return new ResponseEntity<>(
+                mensaje,
+                new HttpHeaders(),
+                HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 }
