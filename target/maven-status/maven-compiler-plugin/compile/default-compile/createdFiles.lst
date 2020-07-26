@@ -1,3 +1,4 @@
 com/fdn/aplicacion/rest_api/Repositorios/HoraRepositorio.class
+com/fdn/aplicacion/rest_api/Controladores/SalasControlador.class
 com/fdn/aplicacion/rest_api/Servicios/HoraServicio.class
 com/fdn/aplicacion/rest_api/Modelos/MHoradequimio.class
