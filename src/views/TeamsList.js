@@ -20,11 +20,12 @@ class TeamsList extends Component {
   }
 
   componentDidMount() {
-    teamsService.getAll().then((response) => {
+    teamsService.getByEstado().then((response) => {
       this.setState({
         teams: response.status === 200 ? response.data : [],
       })
     });
+    console.log(this.teams);
   }
 
   render() {
@@ -40,11 +41,11 @@ class TeamsList extends Component {
         <Row>
           {teams.map((team, index) => {
             return (
-              <Col lg="2" key={team.id}>
+              <Col lg="2" key={team.id_sillon}>
                 <Card small className="card-post mb-4">
                   <CardBody>
-                    <h5 className="card-title">{team.nombre}</h5>
-                    <p className="card-text text-muted">{team.pais}</p>
+                    <h5 className="card-title">{team.id_sillon}</h5>
+                    <p className="card-text text-muted">{String(team.ocupado)}</p>
                   </CardBody>
                 </Card>
               </Col>

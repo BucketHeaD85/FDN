@@ -1,6 +1,6 @@
 import { api } from '../helpers';
 
-const basePath = 'v1/equipo';
+const basePath = '/api/GestionSillones';
 
 function getAll() {
     return api.get(`${basePath}/equipos`);
@@ -14,10 +14,15 @@ function create(data) {
     return api.post(`${basePath}/`, data);
 }
 
+function getByEstado(){
+  return api.get(`${basePath}/false`);
+}
+
 const teamsService = {
     getAll,
     show,
     create,
+  getByEstado,
 };
 
 export default teamsService;
