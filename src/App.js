@@ -1,26 +1,62 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import routes from "./routes";
 
-function App() {
+/*
+import Jumbotron from "react-bootstrap/Jumbotron";
+import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
+import Alert from "react-bootstrap/Alert";
+import {Component} from "react";
+
+
+function AlertVentana(){
+  const [mostrar,setMostrar] = useState(false);
+
+  if(mostrar){
+    return(
+        <Alert variant="info" onClose={() => setMostrar(false) } dismissible>
+          <Alert.Heading>
+            Witness my godhood!
+          </Alert.Heading>
+            <p>Work in progress</p>
+        </Alert>
+    );
+
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Button variant="info" onClick={() => setMostrar(true)}>
+          Ver sillones
+      </Button>
   );
+
 }
 
-export default App;
+const App = () => (
+    <Container className="p-3">
+        <Jumbotron className="pb-1">
+            <h1>Área de Quimioterapia</h1>
+            <h2>Visualización de sillones</h2>
+            <AlertVentana/>
+        </Jumbotron>
+    </Container>
+);
+*/
+
+export default () => (
+    <Router basename={process.env.REACT_APP_BASENAME || ""}>
+        <div>
+            {routes.map((route, index) => {
+                return (
+                    <Route
+                        key={index}
+                        path={route.path}
+                        exact={route.exact}
+                        component={route.component}
+                    />
+                );
+            })}
+        </div>
+    </Router>
+
+);
