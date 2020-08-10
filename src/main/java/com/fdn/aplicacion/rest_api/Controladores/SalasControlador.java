@@ -1,10 +1,12 @@
 package com.fdn.aplicacion.rest_api.Controladores;
 
+import com.fdn.aplicacion.rest_api.Entity.Salasdequimio;
 import com.fdn.aplicacion.rest_api.Entity.Sillonesdequimio;
 import com.fdn.aplicacion.rest_api.Modelos.MSalasdequimio;
 import com.fdn.aplicacion.rest_api.Entity.Sillonesdequimio;
 
 import com.fdn.aplicacion.rest_api.Exceptions.SillonException;
+import com.fdn.aplicacion.rest_api.Servicios.SalasService;
 import com.fdn.aplicacion.rest_api.Servicios.SillonesService;
 import com.fdn.aplicacion.rest_api.Servicios.HoraServicio;
 
@@ -35,9 +37,16 @@ public class SalasControlador {
     @Qualifier("ServicioSillonesdequimio")
     SillonesService servicioSillon;
 
+    @Autowired
+    @Qualifier("ServicioSalasdequimio")
+    SalasService servicioSalas;
     @GetMapping("/Salas")
     public List<Sillonesdequimio> getSillones( ){
-        
         return servicioSillon.getAllSillones();
+    }
+
+    @GetMapping(path="/")
+    public List<Salasdequimio> getSalas( ){
+        return servicioSalas.findAll();
     }
 }
