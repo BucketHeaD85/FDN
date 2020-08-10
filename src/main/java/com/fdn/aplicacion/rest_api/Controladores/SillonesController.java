@@ -79,6 +79,22 @@ public class SillonesController {
         Sillonesdequimio sillon = servicioSillon.findById(id_sillon);
         return sillon.getId_paciente();
     }
+    
+    @DeleteMapping("/Hora/{id_hora}")
+    public ResponseEntity<String> deleteHora(@PathVariable Long id_hora)
+    {
+        try{
+            System.out.println("Holaaaa");
+            servicio.deleteHora(id_hora);
+            return new ResponseEntity<>(
+            "Se borro con exito", 
+            HttpStatus.BAD_REQUEST);
+        }catch(Exception e) {
+            return new ResponseEntity<>(
+            "Ocurrio un error", 
+            HttpStatus.BAD_REQUEST);
+        }
+    }
 
 
 }
