@@ -11,5 +11,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository("repositoriohora")
 public interface HoraRepositorio extends JpaRepository<MHoradequimio, Serializable>{
-    
+    public abstract void deleteByIdHora(long id);
 }
