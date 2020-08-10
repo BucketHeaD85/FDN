@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import sillonesService from "../services/sillones.service";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
@@ -8,15 +7,15 @@ import Alert from "react-bootstrap/Alert";
 import Form from 'react-bootstrap/Form'
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import Modal from "react-bootstrap/Modal";
-import Navbar from "react-bootstrap/Navbar";
 
 import usuario from "../assets/user.png";
 import check from "../assets/check.png";
 import {trackPromise} from "react-promise-tracker";
-import Nav from "react-bootstrap/Nav";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import {NavLink} from "react-bootstrap";
+
 import NavigationBar from "./NavigationBar";
+
+import sillonesService from "../services/sillones.service";
+import pacientesService from "../services/pacientes.service";
 
 class SillonesList extends Component{
 
@@ -44,24 +43,14 @@ class SillonesList extends Component{
         this.cargarSillones()
 
     }
-    cargarNavBar(){
-        return(
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                <Navbar.Toggle aria-controls="responsive-navbar-bar"/>
-                <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="mr-auto">
-                        <NavDropdown title="Secciones" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#gotem">Sección</NavDropdown.Item>
-                            <NavDropdown.Item href="#gotem">Otra sección</NavDropdown.Item>
-                        </NavDropdown>
-                    </Nav>
-                </Navbar.Collapse>
 
-            </Navbar>
-        );
+    recuperarIdPaciente(idSillon){
+        sillonesService.getIdPaciente(idSillon)
     }
-
     cargarSillones(){
+        this.setState({
+            radios:[]
+        })
         trackPromise(
             sillonesService.getAll().then((response) => {
                 this.setState({
@@ -79,11 +68,16 @@ class SillonesList extends Component{
         );
     }
     liberarSillon(){
-        sillonesService.disponibilizar(this.state.idLiberado)
+        sillonesService.getIdPaciente(this.state.idLiberado).then((response)=>{
+            pacientesService.findPacienteById(response.data).then((paciente) =>{
+                paciente.data.estado = 5
+                pacientesService.modificarEstado(paciente.data)
+            })
+        })
         this.cargarSillones()
         this.setState({
             mostrarVentanaLiberacion:false,
-            idLiberado:-1
+            idLiberado:-1,
         })
 
     }
@@ -204,7 +198,7 @@ class SillonesList extends Component{
                     <div className="d-flex justify-content-lg-start">
                         <Button variant={variante_outline} onClick={ () => this.setState({
                             mostrarVentanaLiberacion:true,
-                            idLiberado:sillon.id_sillon
+                            idLiberado:sillon.id_sillon,
                         })}>
                             Liberar sillón
                         </Button>
@@ -242,11 +236,12 @@ class SillonesList extends Component{
         return(
             <Container className="p-3" fluid>
                 <NavigationBar/>
-                <Jumbotron className="pb-1">
-                    <h1>Área de Quimioterapia</h1>
-                    <h2>Visualización de Sillones</h2>
+                <hr></hr>
+                <Jumbotron className="pb-1 bg-secondary">
+                    <h1 className="text-light">Área de Quimioterapia</h1>
+                    <h2 className="text-light">Visualización de Sillones</h2>
                     {this.grupoBotones()}
-                    <Alert variant="light" className="mt-2" onClose={() => this.setState(
+                    <Alert variant="secondary" className="mt-2" onClose={() => this.setState(
                         {
                             mostrar: false
                         })} dismissible>
@@ -281,9 +276,10 @@ class SillonesList extends Component{
         return(
             <Container className="justify-content-center" fluid>
                 <NavigationBar></NavigationBar>
-                <Jumbotron className="pb-1 ">
-                    <h1>Área de Quimioterapia</h1>
-                    <h2>Visualización de Sillones</h2>
+                <hr></hr>
+                <Jumbotron className="pb-1 bg-secondary">
+                    <h1 className="text-light">Área de Quimioterapia</h1>
+                    <h2 className="text-light">Visualización de Sillones</h2>
                     {this.grupoBotones()}
                 </Jumbotron>
             </Container>

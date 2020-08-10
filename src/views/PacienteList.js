@@ -5,6 +5,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faList, faEdit, faTrash} from '@fortawesome/free-solid-svg-icons';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import NavigationBar from "./NavigationBar";
 
 export default class PacienteList extends Component {
 
@@ -42,7 +43,9 @@ export default class PacienteList extends Component {
 
     render() {
         return (
+
             <Card className={"border border-dark bg-dark text-white"}>
+                <NavigationBar></NavigationBar>
                 <Card.Header><FontAwesomeIcon icon={faList}/> Paciente List</Card.Header>
                 <Card.Body>
                     <Table bordered hover striped variant="dark">

@@ -5,6 +5,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSave, faPlusSquare, faUndo, faList, faEdit} from '@fortawesome/free-solid-svg-icons';
 
 import axios from 'axios';
+import NavigationBar from "./NavigationBar";
 
 export default class Paciente extends Component {
 
@@ -94,6 +95,7 @@ export default class Paciente extends Component {
         const {idmedico, estado} = this.state;
         return (
             <Card className={"border border-dark bg-dark text-white"}>
+               <NavigationBar></NavigationBar>
                 <Card.Header><FontAwesomeIcon icon={this.state.id ? faEdit : faPlusSquare}/> {this.state.id ? "Actualizar Paciente" : "Ingresar Paciente"}</Card.Header>
                     <Form onReset={this.resetPaciente} onSubmit={this.state.id ? this.updatePaciente : this.submitPaciente} id="PacienteFormId">
                         <Card.Body>

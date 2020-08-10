@@ -1,4 +1,4 @@
-import {api} from "../helpers";
+import {api} from "../helpers/api";
 
 const basePath = "/api/GestionSalasQuimio";
 const baseSillones = "/api/GestionSillones"
@@ -18,11 +18,15 @@ function getAll(){
     return api.get(`${basePath}/`);
 }
 
+function getIdPaciente(id){
+    return api.get(`${baseSillones}/Paciente/${id}`);
+}
 
 
 const sillonesService = {
     getAll,
-    disponibilizar
+    disponibilizar,
+    getIdPaciente
 };
 
 export default sillonesService;
