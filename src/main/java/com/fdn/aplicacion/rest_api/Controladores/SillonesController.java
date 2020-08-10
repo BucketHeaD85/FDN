@@ -74,6 +74,11 @@ public class SillonesController {
         return servicio.crear(hora);
     }
 
+    @GetMapping("/Paciente/{id_sillon}")
+    public int getIdPaciente(@PathVariable int id_sillon){
+        Sillonesdequimio sillon = servicioSillon.findById(id_sillon);
+        return sillon.getId_paciente();
+    }
 
 
 }

@@ -28,6 +28,8 @@ public class Sillonesdequimio implements Serializable {
     private boolean ocupado;
     @Column(name = "id_sala")
     private int sala;
+    @Column(name = "id_paciente")
+    private int id_paciente;
 
     public int getId_sillon() {
         return id;
@@ -52,6 +54,15 @@ public class Sillonesdequimio implements Serializable {
     public void setId_sala(int id_sala) {
         this.sala = id_sala;
     }
+
+    public int getId_paciente() {
+        return this.id_paciente;
+    }
+
+    public void setId_paciente(int id_paciente) {
+        this.id_paciente = id_paciente;
+    }
+
 
 
 
