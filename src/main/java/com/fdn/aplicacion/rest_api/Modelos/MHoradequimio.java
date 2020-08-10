@@ -20,6 +20,10 @@ public class MHoradequimio{
     @Id
     @GenericGenerator(name="incrementHora", strategy="increment")
     @GeneratedValue(generator="incrementHora")
+
+    @Column(name="id_hora")
+    long idHora;
+
     @Column(name="id_sillon")
     long idSillon;
 
@@ -37,11 +41,20 @@ public class MHoradequimio{
 
     }
 
-    public MHoradequimio(long idSillon, long idPaciente, Timestamp fInicio, Timestamp fTermino) {
+    public MHoradequimio(long idHora, long idSillon, long idPaciente, Timestamp fInicio, Timestamp fTermino) {
+        this.idHora = idHora;
         this.idSillon = idSillon;
         this.idPaciente = idPaciente;
         this.fInicio = fInicio;
         this.fTermino = fTermino;
+    }
+
+    public long getIdHora() {
+        return this.idHora;
+    }
+
+    public void setIdHora(long idHora) {
+        this.idHora = idHora;
     }
 
     public long getIdSillon() {
