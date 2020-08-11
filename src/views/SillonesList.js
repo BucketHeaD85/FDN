@@ -8,6 +8,7 @@ import Form from 'react-bootstrap/Form'
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import Modal from "react-bootstrap/Modal";
 
+
 import usuario from "../assets/user.png";
 import check from "../assets/check.png";
 import {trackPromise} from "react-promise-tracker";
@@ -16,6 +17,9 @@ import NavigationBar from "./NavigationBar";
 
 import sillonesService from "../services/sillones.service";
 import pacientesService from "../services/pacientes.service";
+import DatePicker from "react-datepicker";
+ 
+import "react-datepicker/dist/react-datepicker.css";
 
 class SillonesList extends Component{
 
@@ -31,13 +35,20 @@ class SillonesList extends Component{
             radios:[],
             checked: false,
             valorRadio: -1,
-            idLiberado: -1
+            idLiberado: -1,
+            startDate: new Date(),
         }
         this.tarjetaSillon = this.tarjetaSillon.bind(this);
         this.listadoSillones = this.listadoSillones.bind(this);
         this.ventanaPacientes = this.ventanaPacientes.bind(this);
         this.liberarSillon = this.liberarSillon.bind(this);
     }
+
+    handleChange = date => {
+        this.setState({
+          startDate: date
+        });
+      };
 
     componentDidMount() {
         this.cargarSillones()
@@ -101,6 +112,16 @@ class SillonesList extends Component{
                             <Form.Group controlId="asignacion">
                                 <Form.Label>Identificador del paciente</Form.Label>
                                 <Form.Control type="text" placeholder="RUT o DAU" size="sm"></Form.Control>
+                                <Form.Label>Hora inicio</Form.Label>
+                                <Form.Row>
+                                <DatePicker
+                                selected={this.state.startDate}
+                                onChange={this.handleChange}
+                                showTimeSelect
+                                dateFormat = "Pp"
+                                />
+                                </Form.Row>
+                                
                             </Form.Group>
                         </Form>
                     </Modal.Body>
