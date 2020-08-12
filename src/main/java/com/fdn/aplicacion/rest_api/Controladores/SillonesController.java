@@ -64,6 +64,27 @@ public class SillonesController {
                     HttpStatus.OK);
             }
         }
+
+    @PutMapping(path="/Asignar/",
+            produces = {
+                    MediaType.APPLICATION_XML_VALUE,
+                    MediaType.APPLICATION_JSON_VALUE
+            },
+            consumes = {
+                    MediaType.APPLICATION_XML_VALUE,
+                    MediaType.APPLICATION_JSON_VALUE
+            })
+        public ResponseEntity<Object> ocuparSillon(@RequestBody Sillonesdequimio sillon){
+        boolean nuevo = servicioSillon.actualizar(sillon);
+        if(!nuevo){throw new SillonException("Error al modificar");}
+        else {
+            String mensaje = "Sillón modificado";
+            return new ResponseEntity<>(
+                    mensaje,
+                    new HttpHeaders(),
+                    HttpStatus.OK);
+        }
+    }
     @PostMapping("/")
     public boolean createHora(@RequestBody @Valid MHoradequimio hora){
 
